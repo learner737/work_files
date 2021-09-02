@@ -1,0 +1,31 @@
+package LogExportLogin;
+
+message Login
+{
+	required  int32 login_type			= 1;
+	required  bytes login_uuid          = 2;
+}
+
+message LoginAck
+{
+	required  bool  result				= 1;
+	optional  int64 error_number        = 2;
+}
+
+message LoginCMD
+{
+	required  int32 login_type			= 1;
+	required  bytes login_uuid          = 2;
+	required  bytes task_uuid           = 3;
+}
+
+message ChannelBind
+{
+	required  int64 signature           = 1;
+}
+
+message ChannelBindAck
+{
+	required  bool  result				= 1;
+	optional  int64 error_number        = 2;
+}

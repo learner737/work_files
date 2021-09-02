@@ -1,0 +1,19 @@
+package LogExportFileList;
+	
+message FileListAck
+{
+	required bytes 	  task_uuid         = 1;
+	required bool     result            = 2;
+	optional int64    error_number_msg  = 3;
+	optional int64    error_number_node = 4;
+    repeated FileInfo files             = 5;
+}
+
+message FileInfo
+{
+	required int32       filetype		 = 1;
+	required int64       fileindex       = 2;
+    required bytes  	 filename        = 3;
+    required int64  	 filesize_byte   = 4;
+    required bytes  	 lastupdatetime  = 5;
+}

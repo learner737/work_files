@@ -1,0 +1,60 @@
+package LogExportTask;
+
+enum TaskHandler
+{
+	EN_TASK_HANDLE_WEB		= 1;
+	EN_TASK_HANDLE_MESSAGE  = 2;
+	EN_TASK_HANDLE_MYSQL    = 3;
+	EN_TASK_HANDLE_STORAGE  = 4;
+	EN_TASK_HANDLE_COMPUTE  = 5;
+	EN_TASK_HANDLE_CLIENT   = 6;
+}
+
+message Task
+{
+	required bytes 		 task_uuid           = 1;
+	required int32 		 task_timeout_second = 2;
+	required TaskHandler task_handler        = 3;
+	required bytes       task_handler_userid = 4;
+}
+
+message DownLoadSingleFileTask
+{
+	required bytes 		 task_uuid           = 1;
+	required int32 		 task_timeout_second = 2;
+	required TaskHandler task_handler        = 3;
+	required bytes       task_handler_userid = 4;
+    required bytes  	 filename            = 5;
+	required int64       fileindex           = 6;
+	required int64       filesize_byte       = 7;
+}
+
+message DownLoadHandlersFileListTask
+{
+	required bytes 		   task_uuid           = 1;
+	required int32 		   task_timeout_second = 2;
+	required bytes		   bug_description     = 3;
+	repeated Handler       handler_list        = 4;
+}
+
+message StopDownLoadHandlersFileListTask
+{
+	required bytes 		 task_uuid           = 1;
+}
+
+message Handler
+{
+	required TaskHandler task_handler        = 1;
+	required bytes       task_handler_userid = 2;
+	required bytes 		 task_sub_uuid       = 3;
+	repeated HandlerFile handler_file_list   = 4;
+}
+
+message HandlerFile
+{
+	required int32  	 filetype		 = 1;
+	required int64       fileindex       = 2;
+    required bytes  	 filename        = 3;
+    required int64  	 filesize_byte   = 4;
+    required bytes  	 lastupdatetime  = 5;
+}
