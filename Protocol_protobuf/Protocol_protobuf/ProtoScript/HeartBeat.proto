@@ -1,0 +1,6 @@
+package HeartBeat;
+	
+message HeartBeatInfo
+{
+	optional bytes 	  value         = 1;
+}

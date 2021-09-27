@@ -1,0 +1,81 @@
+package DownLoadFile;
+	
+message DownLoadSingleFileAck
+{
+	required bytes 	  task_uuid         = 1;
+	required bool     result            = 2;
+	optional int64    error_number_msg  = 3;
+	optional int64    error_number_node = 4;
+    optional bytes    file_path         = 5;
+}
+
+message DownLoadHandlersFileListAck
+{
+	required bytes 	  task_uuid         = 1;
+	required bool     result            = 2;
+	optional int64    error_number      = 3;
+    optional bytes    file_path         = 4;
+}
+
+message HandlerAck
+{
+	required bytes 	  task_uuid         = 1;
+	required bool     result            = 2;
+	optional int64    error_number      = 3;
+}
+
+message OpenFile
+{
+	required bytes 	  task_uuid         = 1;
+    required bytes    file_name         = 2;
+    required int64    file_index        = 3;
+    required int64    filesize_byte     = 4;
+	required bytes	  lastupdatetime    = 5;
+}
+
+message OpenFileAck
+{
+	required bool     result            = 1;
+	optional int64    error_number      = 2;
+	required bytes 	  task_uuid         = 3;
+}
+
+message RequstWriteFileBlock
+{
+	required bytes 	  task_uuid         = 1;
+	required int64    block_size_byte   = 2;
+}
+
+message RequstWriteFileBlockAck
+{
+	required bool     result            = 1;
+	optional int64    error_number      = 2;
+	required bytes 	  task_uuid         = 3;
+}
+
+message WriteFileBlockAck
+{
+	required bool     result            = 1;
+	optional int64    error_number      = 2;
+	required bytes 	  task_uuid         = 3;
+}
+
+message CloseFile
+{
+	required bytes 	  task_uuid         = 1;
+    required bytes    file_name         = 2;
+    required int64    file_index        = 3;
+}
+message CloseFileAck
+{
+	required bool     result            = 1;
+	optional int64    error_number      = 2;
+	required bytes 	  task_uuid         = 3;
+}
+
+message StopDownLoadHandlersFileListTaskAck
+{
+	required bytes 	  task_uuid         = 1;
+	required bool     result            = 2;
+	optional int64    error_number      = 3;
+}

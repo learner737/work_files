@@ -1,0 +1,39 @@
+package file_mount_get_file_list;
+import "LogExportTask.proto";
+
+message GetFileListTask
+{
+    required bytes                     task_uuid           = 1;
+    required int32                     task_timeout_second = 2;
+    required LogExportTask.TaskHandler task_handler        = 3;
+    required bytes                     task_handler_userid = 4;
+    required bytes                     mount_root_path     = 5;
+    required bytes                     the_dir_path        = 6;
+}
+    
+message GetFileListTaskAck
+{
+    required bytes    task_uuid         = 1;
+    required bool     result            = 2;
+    optional int64    error_number      = 3;
+}
+
+message GetFileListTaskAckDetail
+{
+    required bytes     task_uuid           = 1;
+    required bool      finish              = 2;
+    required bool      result              = 3;
+    optional int64     error_number_msg    = 4;
+    optional int64     error_number_client = 5;
+    repeated MountFile file_list           = 6;
+}
+
+message MountFile
+{
+    required bool     is_dir            = 1;
+    required bytes    name              = 2;
+    optional bytes    path              = 3;
+    required int64    size_byte         = 4;
+    required bytes    lastupdatetime    = 5;
+    optional bytes    mount_root_path   = 6;
+}

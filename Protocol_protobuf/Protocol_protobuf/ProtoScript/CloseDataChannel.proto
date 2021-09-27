@@ -1,0 +1,14 @@
+package CloseDataChannel;
+	
+message CloseDataChannel
+{
+	required int64 	  signature         = 1;
+	required bytes 	  task_uuid         = 2;
+}
+
+message CloseDataChannelAck
+{
+	required bytes 	  task_uuid         = 1;
+	required bool     result            = 2;
+	optional int64    error_number      = 3;
+}

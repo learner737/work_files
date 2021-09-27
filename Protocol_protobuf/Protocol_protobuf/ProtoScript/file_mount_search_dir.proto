@@ -1,0 +1,20 @@
+package file_mount_search_dir;
+import "LogExportTask.proto";
+
+message SearchDir
+{
+    required bytes                     task_uuid           = 1;
+    required int32                     task_timeout_second = 2;
+    required LogExportTask.TaskHandler task_handler        = 3;
+    required bytes                     task_handler_userid = 4;
+    required bytes                     mount_root_path     = 5;
+    required bytes                     the_dir_path        = 6;
+    required bytes                     keywords            = 7;
+}
+    
+message SearchDirAck
+{
+    required bytes    task_uuid         = 1;
+    required bool     result            = 2;
+    optional int64    error_number      = 3;
+}

@@ -1,0 +1,84 @@
+package file_mount_download_single_file;
+import "LogExportTask.proto";
+
+
+message MountDownloadSingleFileTask
+{
+    required bytes                     task_uuid           = 1;
+    required int32                     task_timeout_second = 2;
+    required LogExportTask.TaskHandler task_handler        = 3;
+    required bytes                     task_handler_userid = 4;
+    required bytes                     mount_root_path     = 5;
+    required bytes                     the_download_file   = 6;
+    required int64                     filesize_byte       = 7;
+}
+  
+message MountDownloadSingleFileTaskAck
+{
+    required bytes    task_uuid       = 1;
+    required bool     result          = 2;
+    optional int64    error_number    = 3;
+}
+
+message MountOpenFile
+{
+    required bytes    task_uuid         = 1;
+    required bytes    the_download_file = 2;
+    required int64    filesize_byte     = 3;
+    required bytes    lastupdatetime    = 4;
+}
+
+message MountOpenFileAck
+{
+    required bool     result            = 1;
+    optional int64    error_number      = 2;
+}
+
+message MountRequstWriteFileBlock
+{
+    optional bytes    task_uuid         = 1;
+    required int64    block_size_byte   = 2;
+}
+
+message MountRequstWriteFileBlockAck
+{
+    required bool     result            = 1;
+    optional int64    error_number      = 2;
+}
+
+message MountWriteFileBlockAck
+{
+    required bool     result            = 1;
+    optional int64    error_number      = 2;
+}
+
+message MountFileBlock
+{
+    required bytes    task_uuid         = 1;
+    required bytes    block             = 2;
+}
+
+message MountCloseFile
+{
+    optional bytes    task_uuid         = 1;
+    required bytes    the_download_file = 2;
+}
+
+message MountCloseFileAck
+{
+    required bool     result            = 1;
+    optional int64    error_number      = 2;
+}
+
+message MountDownloadSingleFileFinish
+{
+    required bool     result              = 1;
+    optional int64    error_number_msg    = 2;
+    optional int64    error_number_client = 3;
+    optional bytes    task_uuid           = 4;
+}
+
+message MountDownloadSingleFileFinishAck
+{
+    optional bytes       reserver         = 1;
+}

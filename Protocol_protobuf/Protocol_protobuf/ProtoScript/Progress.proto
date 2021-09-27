@@ -1,0 +1,40 @@
+package Progress;
+import "LogExportTask.proto";
+	
+enum ProgressType
+{
+	EN_PROCESS_TYPE_DOWNLOAD_FILE = 1;
+	EN_PROCESS_TYPE_ZIP           = 2;
+}
+	
+message ProgressInfo
+{
+	required bytes 	  task_uuid         = 1;
+	required float    progress          = 2;
+	required bool     result            = 3;
+	optional int64    error_number      = 4;
+}
+
+message ProgressHandlerInfo
+{
+	required bytes 	  		task_uuid         = 1;
+	required float    		progress          = 2;
+	required bool     		result            = 3;
+	optional int64    		error_number      = 4;
+	required ProgressType	progress_type     = 5;
+	optional int64			file_total_num    = 6;
+	optional int64			file_finish_num   = 7;	
+	repeated MultErrorInfo  mult_error_number = 8;
+}
+
+
+message MultErrorInfo
+{
+	required LogExportTask.TaskHandler    task_handler      = 1;
+	required bool                         is_start          = 2;
+	required bool						  is_finished       = 3;
+	required bool                         result            = 4;
+	required int64          			  fileservice_error = 5;
+	required int64          		      handler_errer     = 6;
+	optional bytes                        login_uuid        = 7;
+}

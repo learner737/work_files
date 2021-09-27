@@ -1,0 +1,15 @@
+package TaskFunction;
+import "LogExportTask.proto";
+
+
+message TaskCommonFcntion
+{
+    required bytes                     task_uuid           = 1;
+}
+
+message TaskCommonFcntionAck
+{
+    required bytes    task_uuid         = 1;
+    required bool     result            = 2;
+    optional int64    error_number      = 3;
+}
